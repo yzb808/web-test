@@ -1,0 +1,15 @@
+/target/
+/.settings
+.classpath
+.project
+/logs
+/bin
+.metadata
+.Servers
+.tomcatplugin
+.#webclasspath
+mvninstall.bat
+.idea
+*.iml
+*.log
+\src\test\java\com\learn\test\MainTest.java

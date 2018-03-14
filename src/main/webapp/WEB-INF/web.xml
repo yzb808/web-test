@@ -1,0 +1,153 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>web-test Application</display-name>
+
+	<!-- 初始化一些变量，保存在ServletContext里，用 -->	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+  			classpath:spring-context-web.xml
+  		</param-value>
+	</context-param>
+	
+	<context-param>   
+		<param-name>url</param-name>   
+		<param-value>jdbc:MySQL://localhost:3306/4g</param-value>   
+	</context-param>
+	
+	<listener>
+		<listener-class>listener.MyServletContextListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>listener.MyHttpSessionListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>listener.MyServletRequestListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>listener.MyServletContextAttributeListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>listener.MyHttpSessionAttributeListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>listener.MyServletRequestAttributeListener</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>corsFilter</filter-name>
+		<filter-class>filter.CorsFilterTest</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>corsFilter</filter-name>
+		 <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>filter1</filter-name>
+		<filter-class>filter.FilterTest1</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filter1</filter-name>
+		<servlet-name>cookieTest</servlet-name>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>servlet-test</servlet-name>
+		<servlet-class>servlet.ServletTest</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>da</param-name>
+			<param-value>xiao</param-value>
+		</init-param>
+		<init-param>
+			<param-name>duo</param-name>
+			<param-value>少</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-test</servlet-name>
+		<url-pattern>/sTest/a/a/a</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servlet-path</servlet-name>
+		<servlet-class>servlet.ServletPathTest</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet-path</servlet-name>
+		<url-pattern>/a/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>redirect-test</servlet-name>
+		<servlet-class>servlet.ServletRedirectTest</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>redirect-test</servlet-name>
+		<url-pattern>/redirect</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>senderror-test</servlet-name>
+		<servlet-class>servlet.ServletSendErrorTest</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>senderror-test</servlet-name>
+		<url-pattern>/error</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletContextTest</servlet-name>
+		<servlet-class>servlet.ServletContextTest</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servletContextTest</servlet-name>
+		<url-pattern>/sc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SessionTest</servlet-name>
+		<servlet-class>servlet.SessionTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SessionTest</servlet-name>
+		<url-pattern>/session</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>cookieTest</servlet-name>
+		<servlet-class>servlet.CookieTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cookieTest</servlet-name>
+		<url-pattern>/cookie</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>filter2</filter-name>
+		<filter-class>filter.FilterTest2</filter-class>
+		<init-param>
+			<param-name>da</param-name>
+			<param-value>xiao</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>filter2</filter-name>
+		<servlet-name>servlet-test</servlet-name>
+	</filter-mapping>
+	
+
+</web-app>
