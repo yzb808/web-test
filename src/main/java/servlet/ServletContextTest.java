@@ -40,7 +40,6 @@ public class ServletContextTest extends HttpServlet {
 		
 		/*
 		 * getAttribute和setAttribute操作本身是线程安全的，但组合使用不具备原子性，需要用户保障
-		 * 
 		 */
 		System.out.println(context.getAttribute("servlet"));
 		context.setAttribute("servlet", this.getClass().getName());

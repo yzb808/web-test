@@ -21,9 +21,9 @@ public class SessionTest extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				/*
-				 * 使得本地session失效，但并不会删除客户端cookie
+				 * 使得本地（服务端）session失效，但并不会删除客户端cookie
 				 * 失效后，客户端再次请求会分配新的JSessionId。
-				 * 对应到分布式环境时，要删除集中缓存中JSessionId对应的数据.
+				 * 对应到分布式环境时，还要删除集中缓存中JSessionId对应的数据.
 				 */
 				session.invalidate();
 			}
